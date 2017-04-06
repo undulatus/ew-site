@@ -1,0 +1,66 @@
+<div bsModal #resourceModal="bs-modal" id="resourceModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="resourceModalLabel"
+ aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title pull-left">Edit Resource</h4>
+				<button type="button" class="close pull-right" aria-label="Close" (click)="resourceModal.hide()">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div class="row">
+						<span for="resourceRole">Role:</span>
+						<div>
+							<select #resourceRole (change)="removeEmptyValue(resourceRole)" class="form-control" id="resourceRole" name="resourceRole" required>
+								<option value="0"></option>
+								<option *ngFor="let role of resourceRoles" [value]="role">{{role}}</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row">
+						<span for="resourceTechnology">Technology/Practice:</span>
+						<div>
+							<select #resourceTechnology (change)="removeEmptyValue(resourceTechnology)" class="form-control" id="resourceTechnology" name="resourceTechnology" required>
+								<option value="0"></option>
+								<option *ngFor="let technology of resourceTechnologies" [value]="technology">{{technology}}</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row">
+						<span for="resourcePayLevel">Paylevel:</span>
+						<div>
+							<select #resourcePayLevel (change)="removeEmptyValue(resourcePayLevel)" class="form-control" id="resourcePayLevel" name="resourcePayLevel" required>
+								<option value="0"></option>
+								<option *ngFor="let payLevel of resourcePayLevels" [value]="payLevel">{{payLevel}}</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row">
+						<span for="resourceBillable">Billable:</span>
+						<span><input #resourceBillable (change)="isChecked(resourceBillable)" id="resourceBillable" name="resourceBillable" type="checkbox" value="0">Check if yes</span>
+						<!--<span for="resourceBillable">Billable:</span>
+						<div>
+							<select class="form-control" id="resourceBillable" name="resourceBillable" required>
+								<option value="0"></option>
+								<option *ngFor="let act of resourceBillable" [value]="act">{{act}}</option>
+							</select>
+						</div>-->
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-sm" (click)="cancelAction()">
+					Cancel
+				</button>
+				<button type="button" class="btn btn-primary btn-sm" (click)="confirmAction()">
+					Confirm
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

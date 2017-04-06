@@ -1,0 +1,43 @@
+<div class="padding-10">
+  <a *ngFor="let opportunity of myOpp" class="col-1-4">
+    <div class="module hero">
+      <h4>{{opportunity.projectStatus}}</h4>
+    </div>
+  </a>
+  <div class="row padding-left-20 margin-bottom-15">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+      <span class="font-24 primary-text-color">Opportunities</span>
+    </div>
+    <div class="col-md-12 col-lg-12 col-sm-12">
+      <button type="button" class="btn btn-primary pull-right" [routerLink]="['/worksheet']">Create New</button>
+      <!--   <button (click)="notificationmodal.show()" class="btn btn-sm btn-default margin-right-5" type="button"><span class="padding-right-5 glyphicon glyphicon-eye-open" aria-hidden="true"></span>View Details</button>
+        <notification-modal #notificationmodal [title]="title" [body]="body" [confirmLabel]="confirmLabel"></notification-modal>-->
+    </div>
+  </div>
+  <div class="row padding-left-20">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+      <div class="panel panel-default">
+        <div class="tablehead-bg">My Worksheets</div>
+        <div class="panel-body">
+          <div class="col-md-12 col-lg-12 col-sm-12">
+            <table datatable [dtOptions]="dtOptions" class="row-border table table-hover full-width">
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row padding-left-20">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+      <div class="panel panel-default">
+        <div class="tablehead-bg">Other Worksheets</div>
+        <div class="panel-body">
+          <div class="col-md-12 col-lg-12 col-sm-12">
+            <table datatable [dtOptions]="dtOptions2" class="row-border table table-hover full-width">
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div id="opportunityInformation" class="container">
+	<form>
+		<div class="row">
+			<div class="col-xs-offset-9 col-xs-2">
+				<select class="form-control" id="version" required>
+					<option *ngFor="let vr of versions; let i = index" [value]="i + 1">{{vr}}</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row form-group">
+			<label for="projectName" class="col-xs-offset-1 col-xs-2">Project Name</label>
+			<div class="col-xs-2">
+				<input #projectName [(ngModel)]="opportunity.opportunityName" type="text" class="form-control" id="projectName" name="projectName" required>
+			</div>
+
+			<label for="scheduleGranularity" class="col-xs-offset-2 col-xs-2">Schedule Granularity</label>
+			<div class="col-xs-2">
+				<select #scheduleGranularity (change)="resetDuration()" class="form-control" id="scheduleGranularity" name="scheduleGranularity" required>
+					<option value="month">Month</option>
+					<option value="week">Week</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row form-group">
+			<label for="marketCircle" class="col-xs-offset-1 col-xs-2">Market Circle</label>
+			<div class="col-xs-2">
+				<select #marketCircle (change)="removeFirstOption(marketCircle)" class="form-control" id="marketCircle" name="marketCircle" required>
+					<option value="0"></option>
+					<option *ngFor="let mc of marketCircles; let i = index" [value]="i + 1">{{mc.marketCircleName}}</option>
+				</select>
+			</div>
+
+			<label for="projectDuration" class="col-xs-offset-2 col-xs-2">Project Duration</label>
+			<div class="col-xs-2">
+				<input #projectDuration [(ngModel)]="projectDuration.value" (blur)="validateDuration()" type="number" class="form-control" id="projectDuration" name="projectDuration" min="1" [max]="scheduleGranularity.value == 'month' ? 12 : 48" required>
+			</div>
+		</div>
+
+		<div class="row form-group">
+			<label for="serviceLine" class="col-xs-offset-1 col-xs-2">Service Line</label>
+			<div class="col-xs-2">
+				<select #serviceLine (change)="removeFirstOption(serviceLine)" class="form-control" id="serviceLine" name="serviceLine" required>
+					<option value="0"></option>
+					<option *ngFor="let sl of serviceLines; let i = index" [value]="i + 1">{{sl.serviceLineName}}</option>
+				</select>
+			</div>
+
+			<label for="projectStartDate" class="col-xs-offset-2 col-xs-2">Projected Start Date</label>
+			<div class="col-xs-2">
+				<my-date-picker #projectStartDate [options]="datePickerOptions" (dateChanged)="onDateChanged($event)"></my-date-picker>
+			</div>
+		</div>
+
+		<div class="row form-group">
+			<label for="projectStatus" class="col-xs-offset-7 col-xs-2">Project Status</label>
+			<div class="col-xs-2">
+				<input #projectStatus type="text" class="form-control" id="projectStatus" name="projectStatus" required>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div id="activitySummary" class="container">
+	<activity-summary></activity-summary>
+</div>
+
+<div id="activityBreakdown" class="container">
+	<activity-breakdown [projectDuration]="projectDuration.value" [scheduleGranularity]="scheduleGranularity.value"></activity-breakdown>
+</div>
+
+<div id="oppotunityButtons" class="container">
+	<div class="pull-right">
+		<button (click)="createOpportunity()" class="btn btn-primary">Create</button>
+	</div>
+</div>

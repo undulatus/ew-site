@@ -1,0 +1,13 @@
+<ul class="nav navbar-nav navbar-right" *ngIf="showMenu">
+  <li dropdown>
+    <a href="#" id="user-dropdown" dropdownToggle>
+      <img src="http://placehold.it/25x25" class="profile-image img-circle" /> {{currentUser.firstName}} {{currentUser.lastName}}
+      <span class="caret"></span></a>
+    <ul dropdownMenu role="menu" class="dropdown-menu" aria-labelledby="user-dropdown">
+      <li role="menuitem"><a href="#" class="dropdown-item">Profile</a></li>
+      <li role="menuitem"><a href="#" class="dropdown-item">Preferences</a></li>
+      <li role="separator" class="divider dropdown-divider"></li>
+      <li role="menuitem"><a href="#" (click)="logout()" class="dropdown-item">Sign Out</a></li>
+    </ul>
+  </li>
+</ul>

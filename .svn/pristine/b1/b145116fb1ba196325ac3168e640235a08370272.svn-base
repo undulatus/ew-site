@@ -1,0 +1,20 @@
+.container .row {
+    margin: 5px 0;
+}
+
+#opportunityInformation {
+    padding: 15px;
+}
+
+#activitySummary, #activityBreakdown, #activitySummaryFTE {
+    padding-bottom: 15px;
+}
+
+.accordion-toggle > div {
+    border: 0;
+}
+
+#oppotunityButtons {
+    padding: 0;
+    margin-bottom: 20px;
+}

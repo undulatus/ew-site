@@ -1,0 +1,24 @@
+accordion span {
+    font-size: 14px;
+}
+
+#activitySummary > div {
+    margin: 0;
+}
+
+#activitySummary-header {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px 1px 0 1px;
+}
+
+#activitySummary-header > div {
+    padding: 10px 30px;
+}
+
+#activitySummary-header > div:nth-child(-n+2) {
+    border-right: solid #bce8f1 2px;
+}
