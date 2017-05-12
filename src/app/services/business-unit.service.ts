@@ -2,27 +2,19 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
-import { Activity } from '../domain/activity.model';
+import { BusinessUnit } from '../domain/business-unit.model';
 
 @Injectable()
-export class ActivityService {
-    private activityUrl = 'estimate-worksheet/activities';
+export class BusinessUnitService {
+    private businessunitUrl = 'estimate-worksheet/marketcircles';
 
     constructor(
         private http: Http
     ) { }
 
-    getActivities(): Promise<Activity[]> {
-        const url = `${this.activityUrl}`;
+    getBusinessUnit(): Promise<BusinessUnit[]> {
+        const url = `${this.businessunitUrl}`;
         return this.http.get(url).toPromise().then(response=>{
-            return this.extractData(response);
-        }).catch(this.handlePromiseError);
-    }
-
-    getActivitiesByServiceType(value): Promise<Activity[]> {
-        const url = `/estimate-worksheet/servicelines/` + value + '/activities';
-        return this.http.get(url).toPromise().then(response=>{
-            // console.log('getActivity response: ', response);
             return this.extractData(response);
         }).catch(this.handlePromiseError);
     }

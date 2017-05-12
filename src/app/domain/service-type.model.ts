@@ -1,4 +1,4 @@
-export class ServiceLine {
+export class ServiceType {
   serviceLineId: number;
   serviceLineName: string;
 }

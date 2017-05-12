@@ -2,27 +2,26 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
-import { Activity } from '../domain/activity.model';
+import { Practice } from '../domain/practice.model';
 
 @Injectable()
-export class ActivityService {
-    private activityUrl = 'estimate-worksheet/activities';
+export class PracticeService {
+    private practiceUrl = 'estimate-worksheet/practices';
 
     constructor(
         private http: Http
     ) { }
 
-    getActivities(): Promise<Activity[]> {
-        const url = `${this.activityUrl}`;
+    getPractices(): Promise<Practice[]> {
+        const url = `${this.practiceUrl}`;
         return this.http.get(url).toPromise().then(response=>{
             return this.extractData(response);
         }).catch(this.handlePromiseError);
     }
 
-    getActivitiesByServiceType(value): Promise<Activity[]> {
-        const url = `/estimate-worksheet/servicelines/` + value + '/activities';
+    getPracticesPerRole(value): Promise<Practice[]> {
+        const url = `/estimate-worksheet/roles/` + value + '/practices';
         return this.http.get(url).toPromise().then(response=>{
-            // console.log('getActivity response: ', response);
             return this.extractData(response);
         }).catch(this.handlePromiseError);
     }
